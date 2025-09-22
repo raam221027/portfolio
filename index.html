@@ -11,8 +11,8 @@
     <script src="https://unpkg.com/feather-icons"></script>
     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
         body {
             font-family: 'Poppins', sans-serif;
             background: linear-gradient(135deg, #0A192F 0%, #1E293B 100%);
@@ -117,7 +117,7 @@
             <div class="glass-card rounded-2xl p-8 max-w-4xl mx-auto mb-16" data-aos="fade-up">
                 <div class="flex flex-col md:flex-row items-center">
                     <div class="md:w-1/3 mb-8 md:mb-0">
-                        <img src="http://static.photos/technology/320x240/42" alt="Joemar Questadio" class="rounded-full w-48 h-48 object-cover mx-auto">
+                        <img src="https://avatars.githubusercontent.com/u/75476343?v=4" alt="Joemar Questadio" class="rounded-full w-48 h-48 object-cover mx-auto">
                     </div>
                     <div class="md:w-2/3 md:pl-8">
                         <h3 class="text-2xl font-semibold mb-4">Personal Info</h3>
@@ -527,23 +527,24 @@
             // Replace Feather Icons
             feather.replace();
         });
-
-        // Smooth scroll for anchor links
-        document.addEventListener('DOMContentLoaded', function() {
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function(e) {
-                    const targetId = this.getAttribute('href').slice(1);
-                    const target = document.getElementById(targetId);
-                    if (target) {
-                        e.preventDefault();
-                        window.scrollTo({
-                            top: target.offsetTop - 80, // Adjust for fixed nav height
-                            behavior: 'smooth'
-                        });
-                    }
-                });
+    </script>
+    <script>
+    // Smooth scroll for anchor links
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const targetId = this.getAttribute('href').slice(1);
+                const target = document.getElementById(targetId);
+                if (target) {
+                    e.preventDefault();
+                    window.scrollTo({
+                        top: target.offsetTop - 0, // Adjust for fixed nav height
+                        behavior: 'smooth'
+                    });
+                }
             });
         });
-    </script>
+    });
+</script>
 </body>
 </html>
