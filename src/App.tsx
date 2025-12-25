@@ -1,10 +1,13 @@
 import './App.css'
-import Hero from "./components/sections/Hero"
+import Header from "./components/layout/Header"
+import Hero from "./components/layout/Hero"
+
 
 
 function App() {
   return (
     <>
+      <Header />
       <Hero />
     </>
   )

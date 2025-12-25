@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button"
 import { motion } from "framer-motion"
 
+
 export default function Hero() {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
@@ -22,20 +23,12 @@ export default function Hero() {
             Joemar Questadio
           </span>
         </h1>
-
         <p className="mt-6 text-lg text-slate-300">
           Web Developer focused on clean UI, system integration,
           and building practical solutions with modern tools.
         </p>
 
-        <div className="mt-10 flex gap-4 justify-center">
-          <Button size="lg">View Projects</Button>
-          <Button size="lg" variant="outline">
-            Contact Me
-          </Button>
-          <Button size="lg">View Projects</Button>
-          <Button size="lg" variant="outline">Contact Me</Button>
-        </div>
+        {/* Buttons moved to Header */}
       </motion.div>
     </section>
   )
