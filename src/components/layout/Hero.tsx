@@ -1,12 +1,13 @@
 import { Button } from "@/components/ui/button"
 import { motion } from "framer-motion"
+import { AuroraBackground } from "@/components/ui/shadcn-io/aurora-background";
 
 
 export default function Hero() {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background gradient */}
-      <div className="absolute inset-0 -z-10 bg-gradient-to-br from-slate-900 via-indigo-900 to-slate-950" />
+   
 
       {/* Optional noise / texture later */}
       {/* <div className="absolute inset-0 -z-10 bg-[url('/noise.png')] opacity-20" /> */}
@@ -28,6 +29,10 @@ export default function Hero() {
           and building practical solutions with modern tools.
         </p>
 
+   
+
+    
+        
         {/* Buttons moved to Header */}
       </motion.div>
     </section>
