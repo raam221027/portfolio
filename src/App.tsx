@@ -42,7 +42,7 @@ function App() {
               src="/mac-screenshot.jpg"
               title="My Social Media"
               showGradient
-              badge={<span className="text-sm font-semibold">Demo</span>}
+              badge={<span className="text-sm font-semibold text-blue-300">Intel Celeron</span>}
             />
           </div>
         </>
