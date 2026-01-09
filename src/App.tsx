@@ -10,6 +10,7 @@ import ContactPage from "./components/pages/ContactPage";
 
 
 
+
 function App() {
   const [path, setPath] = React.useState<string>(window.location.pathname || "/")
 
@@ -52,6 +53,11 @@ function App() {
       {path === "/certificates" && <CertificatesPage />}
       {path === "/contact" && <ContactPage />}
     </>
+  )
+   return (
+    <div className="App">
+      <Hero />
+    </div>
   )
 }
 
