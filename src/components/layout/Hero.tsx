@@ -20,8 +20,8 @@ export default function Hero() {
               </span>
             </h1>
             <p className="mt-6 text-lg text-slate-300">
-              Web Developer focused on clean UI, system integration,
-              and building practical solutions with modern tools.
+            A passionate Web Developer focused on clean, user-friendly interfaces and seamless system integrations.
+             
             </p>
             {/* Buttons moved to Header */}
           </motion.div>
