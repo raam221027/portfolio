@@ -1,12 +1,13 @@
 import { motion } from "framer-motion"
-import { AuroraBackground } from "@/components/ui/shadcn-io/aurora-background";
+import { SparklesPreview } from "../ui/sparkles";
+
 
 export default function Hero() {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Aurora background (fills full viewport) */}
-      <AuroraBackground className="absolute inset-0 -z-10">
-        <div className="relative z-10 text-center px-6 max-w-3xl">
+      {/* Sparkling Sparkling */}
+      <SparklesPreview className="absolute inset-0 -z-10 w-full h-full">
+        <div className="relative z-10 text-center px-6 w-full max-w-full">
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
@@ -25,8 +26,12 @@ export default function Hero() {
             {/* Buttons moved to Header */}
           </motion.div>
         </div>
-      </AuroraBackground>
+      </SparklesPreview>
+
+      
+
     </section>
+    
   )
 }
 

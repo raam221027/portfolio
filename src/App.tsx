@@ -10,6 +10,7 @@ import ContactPage from "./components/pages/ContactPage";
 
 
 
+
 function App() {
   const [path, setPath] = React.useState<string>(window.location.pathname || "/")
 
