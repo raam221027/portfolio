@@ -53,6 +53,11 @@ function App() {
       {path === "/contact" && <ContactPage />}
     </>
   )
+   return (
+    <div className="App">
+      <Hero />
+    </div>
+  )
 }
 
 export default App
