@@ -1,10 +1,10 @@
 import { motion } from "framer-motion"
 import { SparklesPreview } from "../ui/sparkles";
 
-
 export default function Hero() {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      
       {/* Sparkling Sparkling */}
       <SparklesPreview className="absolute inset-0 -z-10 w-full h-full">
         <div className="relative z-10 text-center px-6 w-full max-w-full">
