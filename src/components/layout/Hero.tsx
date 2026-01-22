@@ -1,10 +1,16 @@
 import { motion } from "framer-motion"
 import { SparklesPreview } from "../ui/sparkles";
+import { InteractiveGridPattern } from "../ui/shadcn-io/interactive-grid-pattern";
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      
+
+
+    <section className="relative z-0 min-h-screen flex items-center justify-center overflow-hidden">
+
+        <InteractiveGridPattern
+    className="absolute inset-0 h-[200%]  skew-y-12 opacity-50 -z-10"
+  />
       {/* Sparkling Sparkling */}
       <SparklesPreview className="absolute inset-0 -z-10 w-full h-full">
         <div className="relative z-10 text-center px-6 w-full max-w-full">
@@ -19,16 +25,14 @@ export default function Hero() {
                 Joemar Questadio
               </span>
             </h1>
-            <p className="mt-6 text-lg text-slate-300">
+            <p className="text-clip mt-6 text-lg text-slate-300">
             A passionate Web Developer focused on clean, user-friendly interfaces and seamless system integrations.
              
             </p>
             {/* Buttons moved to Header */}
           </motion.div>
         </div>
-      </SparklesPreview>
-
-      
+      </SparklesPreview>      
 
     </section>
     

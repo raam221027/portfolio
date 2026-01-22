@@ -1,35 +1,20 @@
 "use client";
 
 import React, { useState } from "react";
-import { cn } from "@repo/shadcn-ui/lib/utils";
+import { cn } from "@/lib/utils";
 
-/**
- * InteractiveGridPattern is a component that renders a grid pattern with interactive squares.
- *
- * @param width - The width of each square.
- * @param height - The height of each square.
- * @param squares - The number of squares in the grid. The first element is the number of horizontal squares, and the second element is the number of vertical squares.
- * @param className - The class name of the grid.
- * @param squaresClassName - The class name of the squares.
- */
 interface InteractiveGridPatternProps extends React.SVGProps<SVGSVGElement> {
   width?: number;
   height?: number;
-  squares?: [number, number]; // [horizontal, vertical]
+  squares?: [number, number];
   className?: string;
   squaresClassName?: string;
 }
 
-/**
- * The InteractiveGridPattern component.
- *
- * @see InteractiveGridPatternProps for the props interface.
- * @returns A React component.
- */
 export function InteractiveGridPattern({
-  width = 40,
+  width = 38,
   height = 40,
-  squares = [24, 24],
+  squares = [32, 24],
   className,
   squaresClassName,
   ...props
@@ -39,17 +24,19 @@ export function InteractiveGridPattern({
 
   return (
     <svg
-      width={width * horizontal}
-      height={height * vertical}
       className={cn(
-        "absolute inset-0 h-full w-full border border-gray-400/30",
-        className,
+        "absolute",
+        // svg will scale based on parent size instead of fixed px dimensions
+        "w-full h-full",
+        className
       )}
+      viewBox={`0  ${width * horizontal} ${height * vertical}`}
       {...(props as any)}
     >
       {Array.from({ length: horizontal * vertical }).map((_, index) => {
         const x = (index % horizontal) * width;
         const y = Math.floor(index / horizontal) * height;
+
         return (
           <rect
             key={index}
@@ -58,9 +45,9 @@ export function InteractiveGridPattern({
             width={width}
             height={height}
             className={cn(
-              "stroke-gray-400/30 transition-all duration-100 ease-in-out [&:not(:hover)]:duration-1000",
-              hoveredSquare === index ? "fill-gray-300/30" : "fill-transparent",
-              squaresClassName,
+              "stroke-gray-400/30 transition-all duration-150",
+              hoveredSquare === index ? "fill-gray-300/20" : "fill-transparent",
+              squaresClassName
             )}
             onMouseEnter={() => setHoveredSquare(index)}
             onMouseLeave={() => setHoveredSquare(null)}
