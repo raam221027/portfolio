@@ -36,7 +36,6 @@ function App() {
       {path === "/" && (
         <>
           <Hero />
-
           <div className="min-h-screen flex items-center justify-center bg-white dark:bg-black">
             <MacbookScroll
               src="/mac-screenshot.jpg"

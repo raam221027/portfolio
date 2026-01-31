@@ -1,7 +1,5 @@
-"use client"
-
 import { useCallback, useEffect, useMemo, useRef } from "react"
-import { cn } from "@/lib/utils"
+import { cn } from "~/lib/utils"
 
 export interface DotPatternProps {
   className?: string
@@ -43,12 +41,12 @@ export function DotPattern({
   className,
   children,
   dotSize = 2,
-  gap = 13,
-  baseColor = "#042158",
-  glowColor = "#00c3ff",
-  proximity = 250,
-  glowIntensity = 2,
-  waveSpeed = 0.1,
+  gap = 24,
+  baseColor = "#404040",
+  glowColor = "#22d3ee",
+  proximity = 120,
+  glowIntensity = 1,
+  waveSpeed = 0.5,
 }: DotPatternProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const containerRef = useRef<HTMLDivElement>(null)
@@ -116,7 +114,7 @@ export function DotPattern({
       const distSq = dx * dx + dy * dy
 
       // Wave animation
-      const wave = Math.sin(dot.x * 0 + dot.y * 0 + time) * 0 + 0
+      const wave = Math.sin(dot.x * 0.02 + dot.y * 0.02 + time) * 0.5 + 0.5
       const waveOpacity = dot.baseOpacity + wave * 0.15
       const waveScale = 1 + wave * 0.2
 
@@ -131,14 +129,14 @@ export function DotPattern({
       if (distSq < proxSq) {
         const dist = Math.sqrt(distSq)
         const t = 1 - dist / proximity
-        const easedT = t * t * (2 - 2 * t) // smoothstep
+        const easedT = t * t * (3 - 2 * t) // smoothstep
 
         // Interpolate color
         r = Math.round(baseRgb.r + (glowRgb.r - baseRgb.r) * easedT)
         g = Math.round(baseRgb.g + (glowRgb.g - baseRgb.g) * easedT)
         b = Math.round(baseRgb.b + (glowRgb.b - baseRgb.b) * easedT)
 
-        opacity = Math.min(1, waveOpacity + easedT * 0.1)
+        opacity = Math.min(1, waveOpacity + easedT * 0.7)
         scale = waveScale + easedT * 0.8
         glow = easedT * glowIntensity
       }
@@ -146,7 +144,7 @@ export function DotPattern({
       const radius = (dotSize / 2) * scale
 
       // Draw glow
-      if (glow > 1) {
+      if (glow > 0) {
         const gradient = ctx.createRadialGradient(
           dot.x,
           dot.y,
@@ -155,19 +153,20 @@ export function DotPattern({
           dot.y,
           radius * 4
         )
-        gradient.addColorStop(0, `rgba(${glowRgb.r}, ${glowRgb.g}, ${glowRgb.b}, 0.9)`)
-        gradient.addColorStop(0.4, `rgba(${glowRgb.r}, ${glowRgb.g}, ${glowRgb.b}, 0.4)`)
+        gradient.addColorStop(0, `rgba(${glowRgb.r}, ${glowRgb.g}, ${glowRgb.b}, ${glow * 0.4})`)
+        gradient.addColorStop(0.5, `rgba(${glowRgb.r}, ${glowRgb.g}, ${glowRgb.b}, ${glow * 0.1})`)
         gradient.addColorStop(1, `rgba(${glowRgb.r}, ${glowRgb.g}, ${glowRgb.b}, 0)`)
-
-     
+        ctx.beginPath()
+        ctx.arc(dot.x, dot.y, radius * 4, 0, Math.PI * 2)
+        ctx.fillStyle = gradient
+        ctx.fill()
       }
 
       // Draw dot
-    ctx.beginPath()
-    ctx.arc(dot.x, dot.y, radius, 0, Math.PI * 2)
-    ctx.fillStyle = `rgba(${r}, ${g}, ${b}, ${opacity})`
-    ctx.fill()
-
+      ctx.beginPath()
+      ctx.arc(dot.x, dot.y, radius, 0, Math.PI * 2)
+      ctx.fillStyle = `rgba(${r}, ${g}, ${b}, ${opacity})`
+      ctx.fill()
     }
 
     animationRef.current = requestAnimationFrame(draw)
@@ -222,19 +221,23 @@ export function DotPattern({
   }, [])
 
   return (
-<div
-  ref={containerRef}
-  className={cn(
-    "relative min-h-screen w-full overflow-hidden bg-neutral-0",
-    className
-  )}
->
+    <div
+      ref={containerRef}
+      className={cn("fixed inset-0 overflow-hidden bg-neutral-950", className)}
+    >
+      <canvas
+        ref={canvasRef}
+        className="absolute inset-0 h-full w-full"
+      />
 
-
- <canvas
-  ref={canvasRef}
-  className="absolute inset-0 h-full w-full"
-/>
+      {/* Vignette overlay */}
+      <div
+        className="pointer-events-none absolute inset-0"
+        style={{
+          background:
+            "radial-gradient(ellipse at center, transparent 0%, transparent 40%, rgba(10,10,10,0.6) 100%)",
+        }}
+      />
 
       {/* Content layer */}
       {children && (

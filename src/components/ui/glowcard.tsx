@@ -28,24 +28,24 @@ export const GlowCard: FC<GlowCardProps> = ({ children, className = "", style })
         className="absolute -inset-1 rounded-3xl"
         style={{
           background: rainbowGradient,
-          filter: "blur(30px)",
+          //filter: "blur(50px)",
           opacity: 0.6,
         }}
       />
 
       {/* Outer diffused glow */}
       <div
-        className="absolute -inset-2 rounded-3xl"
+        className="absolute -inset-1 rounded-3xl"
         style={{
           background: rainbowGradient,
-          filter: "blur(50px)",
+          //filter: "blur(10px)",
           opacity: 0.6,
         }}
       />
 
       {/* Card Content */}
       <div
-        className={`relative rounded-3xl bg-[#1a1d2e] px-1 py-10 shadow-2xl text-white z-10 w-full ${className}`}
+        className={`relative rounded-2xl bg-[#000000] px-6 py-6shadow-2xl text-white z-10 w-full h-full ${className}`}
         style={style}
       >
         {children}
